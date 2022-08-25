@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "787100300758",
+    "firebase_url": "https://barber-app-bb86c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "barber-app-bb86c",
+    "storage_bucket": "barber-app-bb86c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787100300758:android:7a5b1b1a1a932ed86d6077",
+        "android_client_info": {
+          "package_name": "com.example.barberapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787100300758-a1us1b1clh384hc4mskcf7rq67v6okj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADHgcthxpdY1zcdxwzqcErVKmVS1G82_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787100300758-a1us1b1clh384hc4mskcf7rq67v6okj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

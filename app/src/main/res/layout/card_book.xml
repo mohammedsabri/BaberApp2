@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="book"
+            type="com.example.barberapp.models.BookModel" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="24dp"
+        app:cardBackgroundColor="@color/cardview_dark_background"
+        app:cardCornerRadius="15dp">
+
+
+        <!--    <RelativeLayout
+                android:id="@+id/cardBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imageIcon"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@mipmap/ic_moe_round" />
+
+                <TextView
+                    android:id="@+id/service"
+                    android:layout_width="87dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/imageIcon"
+                    android:text="@{book.service}"
+                    android:textSize="24sp"
+                    tools:text="dry cut" />
+
+                <TextView
+                    android:id="@+id/barbername"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="-99dp"
+                    android:layout_marginTop="89dp"
+                    android:layout_toEndOf="@+id/service"
+                    android:text="@{book.barbername}"
+                    android:textSize="24sp"
+                    tools:text="@string/moe" />
+
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/barbername"
+                    android:text="@{Integer.toString(book.cost)}"
+                    android:textSize="24sp"
+                    tools:text="cost" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/cost"
+                    android:text="@{book.time}"
+                    android:textSize="24sp"
+                    tools:text="time" />
+                <TextView
+                    android:id="@+id/appDate"
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/time"
+                    android:text="@{Long.toString(book.appDate)}"
+                    android:textSize="24sp"
+                    tools:text="date" />
+
+                <ImageView
+                    android:id="@+id/imagefavourite"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="104dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_toEndOf="@id/barbername"
+                    app:srcCompat="@android:drawable/star_big_off" />
+
+            </RelativeLayout>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imageIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_moe_round" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageIcon"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_margin="10dp"
+                    android:text="@{book.service}"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="dry cut" />
+
+                <TextView
+                    android:id="@+id/barbername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="82dp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toEndOf="@+id/service"
+                    android:text="@{book.barbername}"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle=""
+                    tools:text="@string/moe" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageIcon"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/barbername"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@{Integer.toString(book.cost)}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    tools:text="cost" />
+
+                <TextView
+                    android:id="@+id/appDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/time"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@{book.appDate}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    tools:text="date" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:textStyle="italic"
+                    android:layout_toEndOf="@+id/cost"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@{book.time}"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="time" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
