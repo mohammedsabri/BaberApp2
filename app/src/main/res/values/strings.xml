@@ -35,6 +35,7 @@
 
 
     <string name="default_web_client_id2">web_client</string>
+    <string name="menu_change_theme">change theme</string>
     <string-array name="time_array">
         <item>11:00</item>
         <item>12:00</item>

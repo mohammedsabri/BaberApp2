@@ -14,7 +14,10 @@
         android:theme="@style/Theme.BarberApp">
 
 
+
+
             <activity android:name=".splash"
+                android:theme="@style/AppTheme.DayNight"
                 android:exported="true">
 
             <intent-filter>

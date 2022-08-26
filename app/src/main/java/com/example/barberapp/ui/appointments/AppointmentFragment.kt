@@ -2,6 +2,8 @@ package com.example.barberapp.ui.appointments
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -103,8 +105,28 @@ class AppointmentFragment : Fragment(), BookClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_appointment, menu)
+
+
+        val item = menu.findItem(R.id.toggleBooks) as MenuItem
+        item.setActionView(R.layout.togglebutton_layout)
+        val toggleBooks: SwitchCompat = item.actionView!!.findViewById(R.id.toggleButton)
+        toggleBooks.isChecked = false
+
+        toggleBooks.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) appointmentViewModel.loadAll()
+            else appointmentViewModel.load()
+        }
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+
+
+
+
+
+
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
@@ -136,6 +158,14 @@ class AppointmentFragment : Fragment(), BookClickListener {
 
     override fun onResume() {
         super.onResume()
+//        // for enabling night mode
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//// for disabling night mode
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//// for enabling night mode in auto mode
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+//// for enabling night mode while following system settings
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_FOLLOW_SYSTEM);
         loggedInViewModel.liveFirebaseUser.observe(viewLifecycleOwner, Observer { firebaseUser ->
             if (firebaseUser != null) {
                 appointmentViewModel.liveFirebaseUser.value = firebaseUser
@@ -144,6 +174,8 @@ class AppointmentFragment : Fragment(), BookClickListener {
         })
         appointmentViewModel.load()
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

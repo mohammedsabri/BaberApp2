@@ -8,7 +8,8 @@ import com.example.barberapp.databinding.CardBookBinding
 import com.example.barberapp.models.BookModel
 
 interface BookClickListener {
-    fun onBookClick(book: BookModel)}
+    fun onBookClick(book: BookModel)
+}
 
 class BookAdapter constructor(private var books: ArrayList<BookModel>)
     : RecyclerView.Adapter<BookAdapter.MainHolder>() {
