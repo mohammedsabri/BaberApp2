@@ -76,7 +76,6 @@ class AppointmentFragment : Fragment(), BookClickListener {
 
         val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-println("delete swpie")
                 val adapter = fragBinding.recyclerView.adapter as BookAdapter
 
                 adapter.removeAt(viewHolder.bindingAdapterPosition)
@@ -94,7 +93,6 @@ println("delete swpie")
 
            val swipeEditHandler = object : SwipeToEditCallback(requireContext()) {
               override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                  println("edit swpie")
                   onBookClick(viewHolder.itemView.tag as BookModel)
               }
             }

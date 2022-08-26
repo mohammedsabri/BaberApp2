@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment__list.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/fragment_appointments.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_appointments.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_book.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/fragment_main_booking.xml" value="0.22395833333333334" />
@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/menu/main.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/menu/menu_appointment.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/menu/menu_book.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_moe.xml" value="0.177" />
       </map>
     </option>
   </component>

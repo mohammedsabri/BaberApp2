@@ -38,9 +38,4 @@
             app:destination="@id/nav_book" />
     </fragment>
 
-    <fragment
-        android:id="@+id/mainBookingFragment"
-        android:name="com.example.barberapp.MainBookingFragment"
-        android:label="fragment_main_booking_list"
-        tools:layout="@layout/fragment_main_booking_list" />
 </navigation>
