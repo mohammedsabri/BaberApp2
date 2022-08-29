@@ -134,7 +134,7 @@ class AppointmentFragment : Fragment(), BookClickListener {
     }
 
     private fun render(booksList: ArrayList<BookModel>) {
-        fragBinding.recyclerView.adapter = BookAdapter(booksList)//,this)
+        fragBinding.recyclerView.adapter = BookAdapter(booksList,this,appointmentViewModel.readOnly.value!!)//,this)
         if (booksList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
            // fragBinding.booksNotFound.visibility = View.VISIBLE

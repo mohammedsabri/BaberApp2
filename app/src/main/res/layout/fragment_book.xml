@@ -46,7 +46,7 @@
         android:id="@+id/spinner2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner1"
+        android:layout_below="@+id/spinner"
 
 
         android:layout_marginTop="484dp"

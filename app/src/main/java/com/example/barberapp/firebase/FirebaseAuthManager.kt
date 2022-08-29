@@ -39,9 +39,9 @@ class FirebaseAuthManager(application: Application) {
             liveFirebaseUser.postValue(firebaseAuth!!.currentUser)
             loggedOut.postValue(false)
             errorStatus.postValue(false)
-//            FirebaseImageManager.
-//            checkStorageForExistingProfilePic(
-//                firebaseAuth!!.currentUser!!.uid)
+            FirebaseImageManager.
+            checkStorageForExistingProfilePic(
+                firebaseAuth!!.currentUser!!.uid)
         }
         configureGoogleSignIn()
 
@@ -76,7 +76,7 @@ class FirebaseAuthManager(application: Application) {
     private fun configureGoogleSignIn() {
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(application!!.getString(R.string.default_web_client_id2))
+            .requestIdToken(application!!.getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 

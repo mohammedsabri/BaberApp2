@@ -23,8 +23,8 @@ object FirebaseDBManager : BookStore {
                     val localList = ArrayList<BookModel>()
                     val children = snapshot.children
                     children.forEach {
-                        val Book = it.getValue(BookModel::class.java)
-                        localList.add(Book!!)
+                        val book = it.getValue(BookModel::class.java)
+                        localList.add(book!!)
                     }
                     database.child("books")
                         .removeEventListener(this)

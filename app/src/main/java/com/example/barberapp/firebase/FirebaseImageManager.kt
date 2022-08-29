@@ -92,7 +92,7 @@ object FirebaseImageManager {
 
                 override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
                     Timber.i("BX onPrepareLoad $placeHolderDrawable")
-                     //uploadImageToFirebase(userid, defaultImageUri.value,updating)
+                   // uploadImageToFirebase(userid, defaultImageUri.value,updating)
                 }
             })
     }

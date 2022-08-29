@@ -23,7 +23,7 @@ class BookViewModel : ViewModel() {
                 book: BookModel) {
         status.value = try {
 
-            //book.profilepic = FirebaseImageManager.imageUri.value.toString()
+            book.profilepic = FirebaseImageManager.imageUri.value.toString()
             FirebaseDBManager.create(firebaseUser,book)
             true
         } catch (e: IllegalArgumentException) {

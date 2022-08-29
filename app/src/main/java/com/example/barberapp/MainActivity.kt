@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                     Timber.i("DX Loading Existing Default imageUri")
                     FirebaseImageManager.updateDefaultImage(
                         currentUser.uid,
-                        R.drawable.moe,
+                        R.drawable.ic_launcher_moe,
                         navHeaderBinding.navHeaderImage)
                 }
             }

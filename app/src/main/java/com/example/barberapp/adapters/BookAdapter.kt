@@ -11,7 +11,10 @@ interface BookClickListener {
     fun onBookClick(book: BookModel)
 }
 
-class BookAdapter constructor(private var books: ArrayList<BookModel>)
+class BookAdapter constructor(private var books: ArrayList<BookModel>,
+                              private val listener: BookClickListener,
+                              private val readOnly: Boolean)
+
     : RecyclerView.Adapter<BookAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -21,9 +24,10 @@ class BookAdapter constructor(private var books: ArrayList<BookModel>)
         return MainHolder(binding)
     }
 
+
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val book = books[holder.adapterPosition]
-        holder.bind(book)
+        holder.bind(book,listener)
     }
 
 
@@ -38,12 +42,13 @@ class BookAdapter constructor(private var books: ArrayList<BookModel>)
     override fun getItemCount(): Int = books.size
 
     inner class MainHolder(val binding : CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
+        val readOnlyRow = readOnly
 
-        fun bind(book: BookModel) {
+        fun bind(book: BookModel, listener: BookClickListener) {
             binding.root.tag = book
             binding.book = book
             binding.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
-          //  binding.root.setOnClickListener { listener.onBookClick(book) }
+            binding.root.setOnClickListener { listener.onBookClick(book) }
               binding.executePendingBindings()
         }
     }

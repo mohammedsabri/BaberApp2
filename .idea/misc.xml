@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_launcher_moe.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_swipe_delete.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/ic_swipe_edit.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1625" />
@@ -15,18 +16,19 @@
         <entry key="app/src/main/res/layout/fragment_.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment__list.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment_appointments.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_book.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_book.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/fragment_main_booking.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/fragment_main_booking_list.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/login.xml" value="0.1897644927536232" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/test.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/togglebutton_layout.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/layout/togglebutton_layout.xml" value="0.1" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/menu/main.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/menu/menu_appointment.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/menu/menu_book.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_moe.xml" value="0.155" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_moe.xml" value="0.177" />
       </map>
     </option>

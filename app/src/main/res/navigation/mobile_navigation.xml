@@ -26,7 +26,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.barberapp.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_book"
+            app:destination="@id/nav_book" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_appointments"
@@ -36,6 +40,9 @@
         <action
             android:id="@+id/action_nav_appointments_to_nav_book"
             app:destination="@id/nav_book" />
+        <action
+            android:id="@+id/action_nav_appointments_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
     </fragment>
 
 </navigation>
