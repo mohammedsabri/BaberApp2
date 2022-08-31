@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 
 import timber.log.Timber
@@ -43,17 +44,20 @@ class Login : AppCompatActivity() {
                 loginBinding.fieldPassword.text.toString())
         }
         loginBinding.emailCreateAccountButton.setOnClickListener {
-            createAccount(loginBinding.fieldEmail.text.toString(),
-                loginBinding.fieldPassword.text.toString())
+            createAccount(
+                loginBinding.fieldEmail.text.toString(),
+                loginBinding.fieldPassword.text.toString()
+            )
 
-
+        }
             loginBinding.googleSignInButton.setSize(SignInButton.SIZE_WIDE)
             loginBinding.googleSignInButton.setColorScheme(0)
 
             loginBinding.googleSignInButton.setOnClickListener {
                 googleSignIn()
             }
-        }
+
+
     }
     private fun googleSignIn() {
         val signInIntent = loginRegisterViewModel.firebaseAuthManager
@@ -72,10 +76,12 @@ class Login : AppCompatActivity() {
         loginRegisterViewModel.liveFirebaseUser.observe(this, Observer
         { firebaseUser -> if (firebaseUser != null)
             startActivity(Intent(this, MainActivity::class.java)) })
-
+        setupGoogleSignInCallback()
         loginRegisterViewModel.firebaseAuthManager.errorStatus.observe(this, Observer
         { status -> checkStatus(status) })
-        setupGoogleSignInCallback()
+
+
+
     }
     private fun setupGoogleSignInCallback() {
         startForResult =
@@ -93,7 +99,7 @@ class Login : AppCompatActivity() {
                             Snackbar.make(loginBinding.loginLayout, "Authentication Failed.",
                                 Snackbar.LENGTH_SHORT).show()
                         }
-                        Timber.i("DonationX Google Result $result.data")
+                        Timber.i("BookX Google Result $result.data")
                     }
                     RESULT_CANCELED -> {
 

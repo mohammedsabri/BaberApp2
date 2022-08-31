@@ -14,7 +14,10 @@
         android:theme="@style/Theme.BarberApp">
 
 
-
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
 
             <activity android:name=".splash"
                 android:theme="@style/AppTheme.DayNight"
@@ -31,6 +34,7 @@
 
         </activity>
 
+        // Telling the app to go to the Login activity and then the MainActivity.
         <activity android:name=".auth.Login"></activity>
         <activity android:name=".MainActivity"></activity>
 

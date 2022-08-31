@@ -55,6 +55,15 @@ class BookFragment : Fragment() {
     }
 
 
+    /**
+     * This function is used to create the view for the fragment
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment,
+     * @param container The parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state, this
+     * is the state.
+     * @return The root view is being returned.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

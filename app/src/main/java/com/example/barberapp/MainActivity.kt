@@ -68,6 +68,12 @@ class MainActivity : AppCompatActivity() {
 
         initNavHeader()
     }
+    /**
+     * The function is called when the activity is started. It creates a new instance of the
+     * LoggedInViewModel class and observes the liveFirebaseUser property. If the liveFirebaseUser
+     * property is not null, the updateNavHeader function is called. If the loggedOut property is true,
+     * the Login activity is started
+     */
     public override fun onStart() {
         super.onStart()
         loggedInViewModel = ViewModelProvider(this).get(LoggedInViewModel::class.java)
@@ -101,6 +107,11 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    /**
+     * If the user has an image stored in Firebase, load it. If not, load the default image
+     *
+     * @param currentUser FirebaseUser - the current user
+     */
     private fun updateNavHeader(currentUser: FirebaseUser) {
         FirebaseImageManager.imageUri.observe(this, { result ->
             if(result == Uri.EMPTY) {
@@ -149,6 +160,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * It registers a callback for the image picker.
+     */
     private fun registerImagePickerCallback() {
         intentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

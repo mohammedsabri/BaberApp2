@@ -1,5 +1,6 @@
 package com.example.barberapp.ui.appointments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
@@ -22,15 +23,15 @@ import com.example.barberapp.auth.LoggedInViewModel
 import com.example.barberapp.databinding.FragmentAppointmentsBinding
 import com.example.barberapp.main.BookXApp
 import com.example.barberapp.models.BookModel
-import com.example.barberapp.utils.SwipeToDeleteCallback
+import com.example.barberapp.utils.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import  com.example.barberapp.utils.SwipeToEditCallback
 import java.util.*
 
 
 class AppointmentFragment : Fragment(), BookClickListener {
 
     lateinit var app: BookXApp
+    lateinit var loader : AlertDialog
     private var _fragBinding: FragmentAppointmentsBinding? = null
     private val fragBinding get() = _fragBinding!!
     private lateinit var appointmentViewModel: AppointmentViewModel
@@ -48,12 +49,15 @@ class AppointmentFragment : Fragment(), BookClickListener {
     ): View? {
         _fragBinding = FragmentAppointmentsBinding.inflate(inflater, container, false)
         val root = fragBinding.root
-//
-//        fragBinding.fab.setOnClickListener {
-//            val action = AppointmentFragmentDirections.actionAppointmentFragmentToBookFragment()
-//            findNavController().navigate(action)
-//        }
+        loader = createLoader(requireActivity())
+
         fragBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
+//          fragBinding.fab.setOnClickListener{
+//              val action =AppointmentFragmentDirections.actionNavAppointmentsToNavBook()
+//              findNavController().navigate(action)
+//          }
+////
+//        }
         appointmentViewModel = ViewModelProvider(this).get(AppointmentViewModel::class.java)
         appointmentViewModel.observableBooksList.observe(viewLifecycleOwner, Observer {
                 books ->
@@ -65,20 +69,24 @@ class AppointmentFragment : Fragment(), BookClickListener {
 //            val action = AppointmentFragmentDirections.actionAppointmentFragmentToBookFragment()
 //            findNavController().navigate(action)
 //        }
-//        showLoader(loader, "Downloading Donations")
+
+
+          showLoader(loader, "Downloading Books")
         appointmentViewModel.observableBooksList.observe(viewLifecycleOwner, Observer { books ->
             books?.let {
                 render(books as ArrayList<BookModel>)
-//                hideLoader(loader)
-//                checkSwipeRefresh()
+                  hideLoader(loader)
+                  checkSwipeRefresh()
             }
         })
 
-//        setSwipeRefresh()
+          setSwipeRefresh()
 
+        /* This is a swipe to delete handler. */
         val swipeDeleteHandler = object : SwipeToDeleteCallback(requireContext()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = fragBinding.recyclerView.adapter as BookAdapter
+                showLoader(loader, "Deleting Book")
 
                 adapter.removeAt(viewHolder.bindingAdapterPosition)
 
@@ -87,7 +95,7 @@ class AppointmentFragment : Fragment(), BookClickListener {
                     appointmentViewModel.user?.uid!!,
                     (viewHolder.itemView.tag as BookModel).uid!!
                 )
-//                hideLoader(loader)
+                  hideLoader(loader)
             }
         }
         val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
@@ -103,6 +111,14 @@ class AppointmentFragment : Fragment(), BookClickListener {
          return root
     }
 
+    /**
+     * We are inflating the menu, finding the toggle button, setting the checked state, and setting the
+     * onCheckedChangeListener
+     *
+     * @param menu The menu object that you want to inflate.
+     * @param inflater The MenuInflater that you use to inflate your menu resource into the Menu
+     * object.
+     */
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_appointment, menu)
 
@@ -112,7 +128,7 @@ class AppointmentFragment : Fragment(), BookClickListener {
         val toggleBooks: SwitchCompat = item.actionView!!.findViewById(R.id.toggleButton)
         toggleBooks.isChecked = false
 
-        toggleBooks.setOnCheckedChangeListener { _, isChecked ->
+        toggleBooks.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) appointmentViewModel.loadAll()
             else appointmentViewModel.load()
         }
@@ -129,8 +145,10 @@ class AppointmentFragment : Fragment(), BookClickListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item,
-            requireView().findNavController()) || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController())
+                || super.onOptionsItemSelected(item)
     }
 
     private fun render(booksList: ArrayList<BookModel>) {
@@ -148,13 +166,32 @@ class AppointmentFragment : Fragment(), BookClickListener {
 //          findNavController().navigate(action)
 //     }
 
+    /**
+     * > When a book is clicked, navigate to the book detail fragment
+     *
+     * @param book BookModel - This is the book that was clicked.
+     */
     override fun onBookClick(book: BookModel) {
 //        val action = AppointmentFragmentDirections.actionAppointmentFragmentToBookDetailFragment(book.uid!!)
         val action =AppointmentFragmentDirections.actionNavAppointmentsToNavBook(book.uid!!)
         if(!appointmentViewModel.readOnly.value!!)
             findNavController().navigate(action)
     }
+    private fun setSwipeRefresh() {
+        fragBinding.swiperefresh.setOnRefreshListener {
+            fragBinding.swiperefresh.isRefreshing = true
+            showLoader(loader, "Downloading Donations")
+            if(appointmentViewModel.readOnly.value!!)
+                appointmentViewModel.loadAll()
+            else
+                appointmentViewModel.load()
+        }
+    }
 
+    private fun checkSwipeRefresh() {
+        if (fragBinding.swiperefresh.isRefreshing)
+            fragBinding.swiperefresh.isRefreshing = false
+    }
 
     override fun onResume() {
         super.onResume()
