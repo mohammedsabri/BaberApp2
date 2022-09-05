@@ -88,13 +88,14 @@ class AppointmentFragment : Fragment(), BookClickListener {
                 val adapter = fragBinding.recyclerView.adapter as BookAdapter
                 showLoader(loader, "Deleting Book")
 
-                adapter.removeAt(viewHolder.bindingAdapterPosition)
+
 
 
                 appointmentViewModel.delete(
-                    appointmentViewModel.user?.uid!!,
+                    appointmentViewModel.liveFirebaseUser.value?.uid!!,
                     (viewHolder.itemView.tag as BookModel).uid!!
                 )
+                adapter.removeAt(viewHolder.bindingAdapterPosition)
                   hideLoader(loader)
             }
         }
@@ -171,10 +172,13 @@ class AppointmentFragment : Fragment(), BookClickListener {
      *
      * @param book BookModel - This is the book that was clicked.
      */
+
     override fun onBookClick(book: BookModel) {
 //        val action = AppointmentFragmentDirections.actionAppointmentFragmentToBookDetailFragment(book.uid!!)
         val action =AppointmentFragmentDirections.actionNavAppointmentsToNavBook(book.uid!!)
-        if(!appointmentViewModel.readOnly.value!!)
+        println("HERE")
+        println(book)
+       if(!appointmentViewModel.readOnly.value!!)
             findNavController().navigate(action)
     }
     private fun setSwipeRefresh() {

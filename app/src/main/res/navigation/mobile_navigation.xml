@@ -14,11 +14,13 @@
             android:id="@+id/action_nav_book_to_nav_appointments"
             app:destination="@id/nav_appointments"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"/>
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/nav_appointments" />
         <argument
             android:name="bookid"
             app:argType="string"
             android:defaultValue=""/>
+
     </fragment>
 
 
@@ -39,7 +41,8 @@
         tools:layout="@layout/fragment_appointments" >
         <action
             android:id="@+id/action_nav_appointments_to_nav_book"
-            app:destination="@id/nav_book" />
+            app:destination="@id/nav_book"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_nav_appointments_to_nav_gallery"
             app:destination="@id/nav_gallery" />

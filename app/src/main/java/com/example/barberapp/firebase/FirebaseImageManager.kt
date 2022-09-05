@@ -108,6 +108,9 @@ object FirebaseImageManager {
                                                 from: Picasso.LoadedFrom?
                     ) {
                         Timber.i("BX onBitmapLoaded $bitmap")
+                        println("IMAGE")
+                        println(userid)
+                        println(bitmap.toString())
                         uploadImageToFirebase(userid, bitmap!!,false)
                         imageView.setImageBitmap(bitmap)
                     }

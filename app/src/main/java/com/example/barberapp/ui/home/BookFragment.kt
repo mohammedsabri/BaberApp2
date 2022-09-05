@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.CalendarView.OnDateChangeListener
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -44,6 +45,7 @@ class BookFragment : Fragment() {
         app = activity?.application as BookXApp
         setHasOptionsMenu(true)
         bookid=args.bookid
+
         //navController = Navigation.findNavController(activity!!, R.id.nav_host_fragment)
 //        val navbook: Button = findViewById(R.id.nav_book) as Button
 //
@@ -123,6 +125,8 @@ class BookFragment : Fragment() {
                 // Apply the adapter to the spinner
                 spinner2.adapter = adapter
             }
+            if(!bookid.equals(""))
+                populateValues(bookid, fragBinding)
         }
 
 
@@ -131,7 +135,17 @@ class BookFragment : Fragment() {
         setButtonListener(fragBinding)
         return root
     }
+private fun populateValues(bookid:String, layout: FragmentBookBinding){
+    //find the booking from the bookid
+    //then you are going to set the values for each of the fieldds
+    //based on the found booking
+//    Spinner spinner = (Spinner)findViewBybookid(R.id.spinner1)
+//    String text = spinner.getSelectedItem().toString()
+//    val appTime = layout.spinner1.selectedItem
 
+//    layout.spinner1.setSelection(service_array.getPosition("beard trim"))
+
+}
     private fun render(status: Boolean) {
         when (status) {
             true -> {
@@ -180,6 +194,7 @@ class BookFragment : Fragment() {
                     bookViewModel.updateBook(
                         loggedInViewModel.liveFirebaseUser.value?.uid!!,bookid,
                         BookModel(
+                            uid = bookid,
                             appDate = currdate, time = appTime as String,
                             cost = amount, barbername = appBabername as String,
                             service = appService as String,
@@ -188,7 +203,7 @@ class BookFragment : Fragment() {
                 }
                 val action = BookFragmentDirections.actionNavBookToNavAppointments()
 //                if(!appointmentViewModel.readOnly.value!!)
-                findNavController().navigate(action)
+                //findNavController().navigate(action)
 
         }
     }

@@ -40,6 +40,10 @@ class BookAdapter constructor(private var books: ArrayList<BookModel>,
         notifyItemRemoved(position)
     }
 
+    fun findBooking(idPassedIn:String): BookModel? {
+        return books.find{it.uid == idPassedIn}
+    }
+
 
 
 

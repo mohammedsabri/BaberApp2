@@ -81,8 +81,11 @@ object FirebaseDBManager : BookStore {
             return
         }
         book.uid = key
+        Log.println(Log.INFO, "book", book.toString())
+        Log.println(Log.INFO, "UID", book.uid)
         val bookValues = book.toMap()
 
+        Log.println(Log.INFO, "values", bookValues.toString())
         val childAdd = HashMap<String, Any>()
         childAdd["/books/$key"] = bookValues
         childAdd["/user-books/$uid/$key"] = bookValues
