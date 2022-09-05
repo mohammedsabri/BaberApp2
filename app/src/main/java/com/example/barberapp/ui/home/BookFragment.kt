@@ -2,6 +2,7 @@ package com.example.barberapp.ui.home
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
@@ -99,6 +100,7 @@ class BookFragment : Fragment() {
         }
         /* This is creating a spinner for the service name. */
         val spinner1: Spinner = fragBinding.spinner1
+
         this.context?.let {
             ArrayAdapter.createFromResource(
                 it,
@@ -110,6 +112,7 @@ class BookFragment : Fragment() {
                 // Apply the adapter to the spinner
                 spinner1.adapter = adapter
             }
+
         }
 
         /* This is creating a spinner for the barber name. */
@@ -132,18 +135,30 @@ class BookFragment : Fragment() {
 
         //fragBinding.recyclerView.setLayoutManager(LinearLayoutManager(activity))
         //fragBinding.recyclerView.adapter = AppointmentAdapter(app.appointmentsStore.findAll())
+//        AppointmentAdapter(app.booksStore.findAll())
         setButtonListener(fragBinding)
         return root
     }
 private fun populateValues(bookid:String, layout: FragmentBookBinding){
-    //find the booking from the bookid
-    //then you are going to set the values for each of the fieldds
-    //based on the found booking
-//    Spinner spinner = (Spinner)findViewBybookid(R.id.spinner1)
-//    String text = spinner.getSelectedItem().toString()
-//    val appTime = layout.spinner1.selectedItem
 
-//    layout.spinner1.setSelection(service_array.getPosition("beard trim"))
+
+
+//    val res: Resources = resources
+//    val arrTime = res.getStringArray(R.array.time_array)
+//    var spinnerPosition = arrTime.indexOf("13:00")
+//    layout.spinner1.setSelection(spinnerPosition)
+
+    
+    val res: Resources = resources
+    val arrService = res.getStringArray(R.array.service_array)
+    var spinnerPosition = arrService.indexOf("Haircut")
+    layout.spinner1.setSelection(spinnerPosition)
+
+    val arrBarber = res.getStringArray(R.array.barbername_array)
+    spinnerPosition = arrBarber.indexOf("Moe")
+    layout.spinner2.setSelection(spinnerPosition)
+
+
 
 }
     private fun render(status: Boolean) {

@@ -25,7 +25,9 @@ abstract class SwipeToEditCallback(context: Context) : ItemTouchHelper.SimpleCal
          * if (viewHolder?.itemViewType == YourAdapter.SOME_TYPE) return 0
          * if (viewHolder?.adapterPosition == 0) return 0
          */
-        if (viewHolder.bindingAdapterPosition == 10)  return 0
+        if ((viewHolder as BookAdapter.MainHolder).readOnlyRow) return 0
+
+//        if (viewHolder.bindingAdapterPosition == 10)  return 0
         return super.getMovementFlags(recyclerView, viewHolder)
     }
 

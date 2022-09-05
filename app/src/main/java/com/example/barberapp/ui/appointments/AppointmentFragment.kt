@@ -161,6 +161,7 @@ class AppointmentFragment : Fragment(), BookClickListener {
             fragBinding.recyclerView.visibility = View.VISIBLE
            // fragBinding.booksNotFound.visibility = View.GONE
         }
+        appointmentViewModel.readOnly.value!!
     }
 //        override fun onBookClick(book: BookModel) {
 //        val action = AppointmentFragmentDirections.actionAppointmentFragmentToBookDetailFragment(book.id)
